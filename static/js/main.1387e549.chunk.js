@@ -1,0 +1,2 @@
+(this.webpackJsonpmatteolutz=this.webpackJsonpmatteolutz||[]).push([[0],{9:function(t,e,n){"use strict";n.r(e);var c=n(0),r=n.n(c),s=n(3),a=n.n(s),o=n(1);var i=function(){return Object(o.jsx)("div",{className:"App",children:"Matteo Lutz"})};a.a.render(Object(o.jsx)(r.a.StrictMode,{children:Object(o.jsx)(i,{})}),document.getElementById("root"))}},[[9,1,2]]]);
+//# sourceMappingURL=main.1387e549.chunk.js.map

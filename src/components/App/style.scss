@@ -1,0 +1,72 @@
+@import "../../index";
+
+.main-content {
+  font-size: $fz-lg;
+
+  width: 100%;
+
+  padding: 0 150px;
+
+  counter-reset: heading-number 0;
+
+  @media screen and (max-width: 1080px) {
+    padding: 0 100px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 50px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 0 25px;
+  }
+}
+
+.big-heading {
+  font-size: clamp(40px, 8vmin, 80px);
+}
+
+.medium-heading {
+    font-size: clamp(30px, 6vmin, 60px);
+}
+
+.small-heading {
+    font-size: clamp(20px, 4vmin, 40px);
+}
+
+.heading-green-mono {
+  color: $foreground-tertiary;
+  font-family: $font-family-mono;
+}
+
+.numbered-heading {
+  color: $foreground-primary;
+  font-size: clamp(26px, 5vmin, #{$fz-heading});
+
+  line-height: 1.1;
+
+  &::before {
+    position: relative;
+    bottom: 3px;
+    font-size: clamp(#{$fz-md}, 3vmin, #{$fz-xl});
+    font-weight: $fw-normal;
+    content: "0" counter(heading-number) ".";
+    color: $foreground-tertiary;
+    margin-right: 10px;
+    font-family: $font-family-mono;
+    counter-increment: heading-number 1;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: $foreground-secondary;
+  }
+
+}
+
+.section {
+  margin-bottom: 20px;
+}

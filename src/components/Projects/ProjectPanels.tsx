@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {getGithubRepos} from "../../services/github";
 import {IGithubRepo} from "../../feature/github/githubRepo";
 
-function ProjectPanels() {
+const ProjectPanels: FC = () => {
 
     const GH_USERNAME: string = "matteolutz";
 
@@ -15,7 +15,7 @@ function ProjectPanels() {
         getGithubRepos(GH_USERNAME)
             .then((repos: Array<IGithubRepo> | null) => {
                 setLoaded(true);
-                if(repos !== null) {
+                if (repos !== null) {
                     setRepos(repos);
                     setError(undefined);
                 } else {
@@ -25,19 +25,22 @@ function ProjectPanels() {
             });
     }, []);
 
-    if(error) {
-        return <div>There was an error, while fetching the data: {error}</div>
-    } else if(!isLoaded) {
-        return <div>Loading...</div>
-    } else {
-        return (
-            <div>
-                {repos.map((repo: IGithubRepo) => (
-                    <div>{repo.name}</div>
-                ))}
-            </div>
-        );
+    if (error) {
+        return (<div>There was an error, while fetching the data: {error}</div>);
     }
-}
+
+    if (!isLoaded) {
+        return (<div>Loading...</div>);
+    }
+
+    return (
+        <div>
+            {repos.map((repo: IGithubRepo) => (
+                <div>{repo.name}</div>
+            ))}
+        </div>
+    );
+
+};
 
 export default ProjectPanels;

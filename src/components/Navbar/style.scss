@@ -33,7 +33,6 @@ $bars-toggle-width: 768px;
   }
 
   @media screen and (max-width: $bars-toggle-width) {
-
       &:not(.shadow) {
         height: fit-content;
       }
@@ -42,7 +41,7 @@ $bars-toggle-width: 768px;
       height: fit-content;
 
       .nav-brand {
-        margin-bottom: 20px;
+        display: none;
       }
 
       .nav-bars {

@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import logo from "../../assets/png/logo.png";
 import './style.scss';
 
-function Navbar() {
+const Navbar: FC = () => {
 
     const [prevScrollPos, _setPrevScrollPos] = useState<number>(window.pageYOffset);
     const prevScrollPosRef = useRef(prevScrollPos);
@@ -14,23 +14,24 @@ function Navbar() {
     const [hidden, setHidden] = useState<boolean>(false);
     const [shadow, setShadow] = useState<boolean>(false);
 
-    const handleScroll = (): void => {
-        const currentScrollPos: number = window.pageYOffset;
-
-        const willBeHidden: boolean = prevScrollPosRef.current < currentScrollPos;
-
-        setPrevScrollPos(currentScrollPos);
-        setHidden(willBeHidden);
-        setShadow(currentScrollPos !== 0);
-    }
-
     useEffect(() => {
+        const handleScroll = (): void => {
+            const currentScrollPos: number = window.pageYOffset;
+
+            const willBeHidden: boolean = prevScrollPosRef.current < currentScrollPos;
+
+            setPrevScrollPos(currentScrollPos);
+            setHidden(willBeHidden);
+            setShadow(currentScrollPos !== 0);
+        }
+
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.removeEventListener("scroll", handleScroll);
         }
     }, []);
 
+    // noinspection HtmlUnknownAnchorTarget
     return (
         <div className={`nav${hidden ? " hidden" : ""}${shadow ? " shadow" : ""}`}>
             <a href="/" className="nav-brand">
@@ -46,6 +47,6 @@ function Navbar() {
 
         </div>
     );
-}
+};
 
 export default Navbar;

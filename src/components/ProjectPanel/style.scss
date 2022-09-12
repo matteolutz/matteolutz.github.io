@@ -1,0 +1,60 @@
+@import "../../index";
+
+.project-panel {
+  border-radius: 10px;
+  border: 1px solid $foreground-tertiary;
+  padding: 20px 10px;
+  width: 20vmin;
+  max-width: 20vmin;
+  height: 30vmin;
+  cursor: pointer;
+  transition: 0.4s;
+  overflow: hidden;
+  text-align: center;
+
+  &:hover {
+    background-color: $background-secondary;
+    /* transform: translateY(-1%); */
+    transform: scale(1.01);
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.project-panel__heading {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $foreground-tertiary;
+  font-family: $font-family-mono;
+  font-size: clamp(#{$fz-md}, 3vmin, #{$fz-xl});
+}
+
+.project-panel__description {
+  width: 100%;
+  color: $foreground-secondary;
+  font-size: clamp(#{$fz-xxs}, 1vmin, #{$fz-xs});
+  font-family: $font-family-sans;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+}
+
+.project-panel__no-desc {
+  color: $color-alert;
+}
+
+.project-panel__stars {
+  $font-size: clamp(#{$fz-sm}, 2vmin, #{$fz-lg});
+  font-size: $font-size;
+
+  & > svg {
+    font-size: calc(0.7 * #{$font-size});
+  }
+
+}

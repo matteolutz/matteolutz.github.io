@@ -19,14 +19,14 @@ export const getMLConfigFile = async (repo: IGithubRepo): Promise<IGithubRepoMLC
     return infoFile as IGithubRepoMLConfigFile;
 }
 
-export const getGithubRepos = async (username: string): Promise<Array<IGithubRepo> | null> => {
-    const repoInfoJson: any = await(await fetch(`https://api.github.com/users/${username}/repos`)).json()
+export const getGithubRepos = async (username: string): Promise<Array<IGithubRepo>> => {
+    const repoInfoJson: any = await (await fetch(`https://api.github.com/users/${username}/repos`)).json();
 
     if(repoInfoJson.message && repoInfoJson.message === "Not Found") {
-        return null;
+        return Promise.reject("User not found");
     }
 
-    return repoInfoJson.map(async (jsonRepo: any) => {
+    return repoInfoJson.map((jsonRepo: any) => {
         return jsonRepo as IGithubRepo;
     });
 }

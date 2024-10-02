@@ -78,6 +78,7 @@ const Navbar: FC<{ setBlur: (blur: boolean) => void }> = ({ setBlur }) => {
         "items-center",
         "py-4",
         "px-[3rem]",
+        "max-md:px-[1.5rem]",
         "z-10",
         "font-mono",
         "transition-all",

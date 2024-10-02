@@ -14,12 +14,12 @@ const MobileNavSidebar: FC<{ show: boolean; close: () => void }> = ({
   return (
     <animated.div
       style={{ right: animatedProps.right }}
-      className="fixed z-20 top-0 w-[50vw] h-[100vh] bg-background-tertiary"
+      className="fixed z-20 top-0 w-[min(75vw,400px)] h-[100vh] bg-background-tertiary"
     >
       <div className="flex flex-col w-full h-full">
-        <div className="w-full py-8 px-[3rem] flex justify-end">
+        <div className="w-full py-6 px-[1.5rem] flex justify-end">
           <button onClick={close.bind(this)}>
-            <FaTimes className="text-tertiary text-lg" />
+            <FaTimes className="text-tertiary text-xl" />
           </button>
         </div>
         <div className="flex flex-col w-full h-full items-center justify-center gap-12">

@@ -15,6 +15,14 @@ export default {
       transitionTimingFunction: {
         DEFAULT: "cubic-bezier(0.645,0.045,0.355,1)",
       },
+      colors: {
+        primary: "#ccd6f6",
+        secondary: "#8892b0",
+        tertiary: "#64ffda",
+        "background-primary": "#0a192f",
+        "background-secondary": "#233044",
+        "background-tertiary": "#112240",
+      },
     },
     fontFamily: {
       sans: [
@@ -27,13 +35,6 @@ export default {
         "sans-serif",
       ],
       mono: ["SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", "monospace"],
-    },
-    colors: {
-      primary: "#ccd6f6",
-      secondary: "#8892b0",
-      tertiary: "#64ffda",
-      "background-primary": "#0a192f",
-      "background-secondary": "#233044",
     },
   },
   plugins: [],

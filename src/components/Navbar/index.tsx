@@ -2,8 +2,11 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import logo from "@/assets/png/logo.png";
 import { useRefState } from "@/hooks/react";
 import cn from "@/utils/cn";
+import { FaBars } from "react-icons/fa";
+import MobileNavSidebar from "./mobile";
+import { useIsVisible } from "@/hooks/dom";
 
-const NAVBAR_LINKS: Array<{ name: string; href: string }> = [
+export const NAVBAR_LINKS: Array<{ name: string; href: string }> = [
   {
     name: "About",
     href: "/#about",
@@ -22,12 +25,28 @@ const NAVBAR_LINKS: Array<{ name: string; href: string }> = [
   },
 ];
 
-const Navbar: FC = () => {
+const Navbar: FC<{ setBlur: (blur: boolean) => void }> = ({ setBlur }) => {
   const [prevScrollPos, setPrevScrollPos, prevScrollPosRef] =
     useRefState<number>(window.scrollY);
 
   const [hidden, setHidden] = useState<boolean>(false);
   const [shadow, setShadow] = useState<boolean>(false);
+
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const sidebarContainerRef = useRef<HTMLDivElement>(null);
+  const isSidebarContainerVisible = useIsVisible(sidebarContainerRef);
+  useEffect(() => {
+    sidebarOpen
+      ? document.body.classList.add("overflow-hidden")
+      : document.body.classList.remove("overflow-hidden");
+
+    setBlur(sidebarOpen);
+  }, [sidebarOpen]);
+
+  useEffect(() => {
+    if (isSidebarContainerVisible) return;
+    setSidebarOpen(false);
+  }, [isSidebarContainerVisible]);
 
   const handleScroll = (): void => {
     const currentScrollPos: number = Math.max(0, window.scrollY);
@@ -56,7 +75,6 @@ const Navbar: FC = () => {
         "h-[70px]",
         "flex",
         "justify-between",
-        "max-md:justify-center",
         "items-center",
         "py-4",
         "px-[3rem]",
@@ -72,12 +90,12 @@ const Navbar: FC = () => {
     >
       <a
         href="/"
-        className="text-secondary, flex items-center px-[0rem] h-[40px] cursor-pointer max-md:hidden"
+        className="text-secondary, flex items-center px-[0rem] h-[40px] cursor-pointer"
       >
         <img className="h-full" src={logo} alt="Matteo Lutz" />
       </a>
 
-      <div className="flex items-center justify-center gap-4 flex-wrap max-sm:gap-y-1">
+      <div className="flex items-center justify-center gap-4 flex-wrap max-sm:gap-y-1 max-md:hidden">
         {NAVBAR_LINKS.map(({ name, href }, idx) => (
           <a
             key={idx}
@@ -87,6 +105,19 @@ const Navbar: FC = () => {
             <span className="text-xs text-tertiary font-mono">*</span> {name}
           </a>
         ))}
+      </div>
+
+      <div ref={sidebarContainerRef} className="hidden max-md:block">
+        <button
+          aria-label="Menu"
+          onClick={() => setSidebarOpen((open) => !open)}
+        >
+          <FaBars className="text-tertiary text-xl" />
+        </button>
+        <MobileNavSidebar
+          show={sidebarOpen}
+          close={setSidebarOpen.bind(this, false)}
+        />
       </div>
     </div>
   );

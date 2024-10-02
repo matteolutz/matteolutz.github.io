@@ -3,6 +3,7 @@ import "./style.scss";
 import SectionHeading from "@/components/primitives/SectionHeading";
 import Link from "@/components/primitives/Link";
 import mePng from "@/assets/png/me.png";
+import Image from "@/components/primitives/Image";
 
 const About: FC = () => (
   <section className="section-about section" id="about">
@@ -60,9 +61,10 @@ const About: FC = () => (
           learning, software development, and microcontroller programming.
         </p>
       </div>
-      <div className="w-full max-md:max-w-[300px]">
+      {/*<div className="w-full max-md:max-w-[300px]">
         <img className="w-full rounded-lg" alt="Me!" src={mePng} />
-      </div>
+      </div>*/}
+      <Image src={mePng} caption="Yep, that's me!" />
     </div>
   </section>
 );

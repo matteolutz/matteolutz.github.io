@@ -1,52 +1,95 @@
-import React, {FC, useEffect, useRef, useState} from 'react';
-import logo from "../../assets/png/logo.png";
-import './style.scss';
+import React, { FC, useEffect, useRef, useState } from "react";
+import logo from "@/assets/png/logo.png";
+import { useRefState } from "@/hooks/react";
+import cn from "@/utils/cn";
+
+const NAVBAR_LINKS: Array<{ name: string; href: string }> = [
+  {
+    name: "About",
+    href: "/#about",
+  },
+  {
+    name: "Experience",
+    href: "/#experience",
+  },
+  {
+    name: "Projects",
+    href: "/#projects",
+  },
+  {
+    name: "Contact",
+    href: "/#contact",
+  },
+];
 
 const Navbar: FC = () => {
+  const [prevScrollPos, setPrevScrollPos, prevScrollPosRef] =
+    useRefState<number>(window.scrollY);
 
-    const [prevScrollPos, _setPrevScrollPos] = useState<number>(window.pageYOffset);
-    const prevScrollPosRef = useRef(prevScrollPos);
-    const setPrevScrollPos = (p: number): void => {
-        prevScrollPosRef.current = p;
-        _setPrevScrollPos(p);
-    }
+  const [hidden, setHidden] = useState<boolean>(false);
+  const [shadow, setShadow] = useState<boolean>(false);
 
-    const [hidden, setHidden] = useState<boolean>(false);
-    const [shadow, setShadow] = useState<boolean>(false);
+  const handleScroll = (): void => {
+    const currentScrollPos: number = Math.max(0, window.scrollY);
 
-    useEffect(() => {
-        const handleScroll = (): void => {
-            const currentScrollPos: number = window.pageYOffset;
+    const willBeHidden: boolean = prevScrollPosRef.current < currentScrollPos;
 
-            const willBeHidden: boolean = prevScrollPosRef.current < currentScrollPos;
+    setPrevScrollPos(currentScrollPos);
+    setHidden(willBeHidden);
+    setShadow(currentScrollPos !== 0);
+  };
 
-            setPrevScrollPos(currentScrollPos);
-            setHidden(willBeHidden);
-            setShadow(currentScrollPos !== 0);
-        }
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        }
-    }, []);
+  return (
+    <div
+      className={cn(
+        "fixed",
+        "top-0",
+        "left-0",
+        "w-full",
+        "h-[70px]",
+        "flex",
+        "justify-between",
+        "max-md:justify-center",
+        "items-center",
+        "py-4",
+        "px-[3rem]",
+        "z-10",
+        "font-mono",
+        "transition-all",
+        "bg-background-primary",
+        "bg-opacity-85",
+        "backdrop-blur",
+        hidden && "-translate-y-full",
+        shadow ? "shadow-navbar" : "h-[90px]",
+      )}
+    >
+      <a
+        href="/"
+        className="text-secondary, flex items-center px-[0rem] h-[40px] cursor-pointer max-md:hidden"
+      >
+        <img className="h-full" src={logo} alt="Matteo Lutz" />
+      </a>
 
-    // noinspection HtmlUnknownAnchorTarget
-    return (
-        <div className={`nav${hidden ? " hidden" : ""}${shadow ? " shadow" : ""}`}>
-            <a href="/" className="nav-brand">
-                <img src={logo} alt="Matteo Lutz" />
-            </a>
-
-            <div className="nav-menu">
-                <a href="/#about" className="nav-link">About</a>
-                <a href="/#experience" className="nav-link">Experience</a>
-                <a href="/#projects" className="nav-link">Projects</a>
-                <a href="/#contact" className="nav-link">Contact</a>
-            </div>
-
-        </div>
-    );
+      <div className="flex items-center justify-center gap-4 flex-wrap max-sm:gap-y-1">
+        {NAVBAR_LINKS.map(({ name, href }, idx) => (
+          <a
+            key={idx}
+            href={href}
+            className="text-secondary cursor-pointer text-sm transition-colors hover:text-tertiary"
+          >
+            <span className="text-xs text-tertiary font-mono">*</span> {name}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;

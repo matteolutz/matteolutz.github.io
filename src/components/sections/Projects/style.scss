@@ -1,0 +1,11 @@
+@import "../../../index";
+
+.project-panel-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px 10px;
+}

@@ -18,7 +18,7 @@ const App: FC = () => {
       <SocialOverlay />
       <div className={cn(blur && "blur", "transition-[filter]")}>
         <div className="w-full h-full flex justify-center max-[1400px]:px-24 max-lg:px-12 max-md:px-8">
-          <div className="w-full max-w-[1000px] flex flex-col gap-10 [&>section]:w-full mb-20">
+          <div className="w-full max-w-[1000px] flex flex-col [&>section]:pt-20 [&>section]:w-full mb-20">
             <Hero />
             <About />
             <Experience />

@@ -37,14 +37,7 @@ const About: FC = () => (
         </p>
         <p>
           My programming experience spans a wide range of projects, from
-          frequent participation in{" "}
-          <Link
-            target="_blank"
-            href="https://www.hacktothefuture.de/de/startseite"
-          >
-            HTTF Hackathons
-          </Link>{" "}
-          and the{" "}
+          frequent participation in Hackathons and the{" "}
           <Link target="_blank" href="https://bwinf.de/bundeswettbewerb/">
             Bundeswettbewerb Informatik (BWINF)
           </Link>{" "}

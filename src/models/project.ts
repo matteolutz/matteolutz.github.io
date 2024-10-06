@@ -4,6 +4,11 @@ export type ProjectType = "project" | "startup";
 
 export type ProjectStatus = "wip" | "paused" | "done";
 
+export type ProjectRelation = {
+  name: string;
+  link: string;
+};
+
 type Project = {
   type: ProjectType;
   date: Moment;
@@ -19,7 +24,8 @@ type Project = {
     github?: string;
     linkedin?: string;
   };
-  relatedPersons?: Array<{ name: string; link: string }>;
+  relatedPersons?: Array<ProjectRelation>;
+  otherRelations?: Array<ProjectRelation>;
 };
 
 export default Project;

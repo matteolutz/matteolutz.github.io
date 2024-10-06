@@ -58,22 +58,43 @@ const Projects: FC = () => {
               </div>
               <div className="bg-[#112240] p-6 text-base shadow-project flex flex-col gap-4 rounded">
                 <div>{project.description}</div>
-                {project.relatedPersons &&
-                  project.relatedPersons.length > 0 && (
-                    <div className="text-xs font-mono flex gap-x-2 flex-wrap">
-                      Related people:&nbsp;
-                      {project.relatedPersons.map((person, idx) => (
-                        <PrimitiveLink
-                          key={idx}
-                          target="_blank"
-                          className="font-mono"
-                          href={person.link}
-                        >
-                          {person.name}
-                        </PrimitiveLink>
-                      ))}
-                    </div>
-                  )}
+                {(project.relatedPersons || project.otherRelations) && (
+                  <div className="flex flex-col gap-y-1">
+                    {project.relatedPersons &&
+                      project.relatedPersons.length > 0 && (
+                        <div className="text-xs font-mono flex gap-x-2 flex-wrap">
+                          Related people:
+                          {project.relatedPersons.map((person, idx) => (
+                            <PrimitiveLink
+                              key={idx}
+                              target="_blank"
+                              className="font-mono"
+                              href={person.link}
+                            >
+                              {person.name}
+                            </PrimitiveLink>
+                          ))}
+                        </div>
+                      )}
+
+                    {project.otherRelations &&
+                      project.otherRelations.length > 0 && (
+                        <div className="text-xs font-mono flex gap-x-2 flex-wrap">
+                          Other relations:
+                          {project.otherRelations.map((rel, idx) => (
+                            <PrimitiveLink
+                              key={idx}
+                              target="_blank"
+                              className="font-mono"
+                              href={rel.link}
+                            >
+                              {rel.name}
+                            </PrimitiveLink>
+                          ))}
+                        </div>
+                      )}
+                  </div>
+                )}
               </div>
               <div
                 className={cn(

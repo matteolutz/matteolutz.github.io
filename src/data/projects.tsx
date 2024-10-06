@@ -61,6 +61,12 @@ export const PROJECTS: Array<Project> = [
         link: "https://www.linkedin.com/in/adrian-haupt/",
       },
     ],
+    otherRelations: [
+      {
+        name: "Karl-Maybach-Gymnasium",
+        link: "https://kmg-fn.de",
+      },
+    ],
   },
   {
     type: "project",

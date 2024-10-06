@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import "./style.scss";
 import SectionHeading from "@/components/primitives/SectionHeading";
-import Link from "@/components/primitives/Link";
 import mePng from "@/assets/png/me.png";
 import Image from "@/components/primitives/Image";
+import PrimitiveLink from "@/components/primitives/PrimitiveLink";
 
 const About: FC = () => (
   <section className="section-about section" id="about">
@@ -17,15 +17,15 @@ const About: FC = () => (
           Hey! My name is Matteo, and I'm a passionate computer science student
           with a strong background in programming and software development. I
           graduated from{" "}
-          <Link target="_blank" href="https://kmg-fn.de/">
+          <PrimitiveLink target="_blank" href="https://kmg-fn.de/">
             Karl-Maybach-Gymnasium
-          </Link>{" "}
+          </PrimitiveLink>{" "}
           in Friedrichshafen with top grades in Mathematics, Computer Science,
           and English, and I'm currently pursuing a Bachelor's degree in
           Computer Science at the{" "}
-          <Link href="https://tum.de" target="_blank">
+          <PrimitiveLink href="https://tum.de" target="_blank">
             Technische Universität München
-          </Link>
+          </PrimitiveLink>
         </p>
         <p>
           Since an early age, I’ve been fascinated by technology, actively
@@ -38,17 +38,23 @@ const About: FC = () => (
         <p>
           My programming experience spans a wide range of projects, from
           frequent participation in Hackathons and the{" "}
-          <Link target="_blank" href="https://bwinf.de/bundeswettbewerb/">
+          <PrimitiveLink
+            target="_blank"
+            href="https://bwinf.de/bundeswettbewerb/"
+          >
             Bundeswettbewerb Informatik (BWINF)
-          </Link>{" "}
+          </PrimitiveLink>{" "}
           to software development for the F1-in-Schools team{" "}
-          <Link target="_blank" href="https://evolut1on.de/">
+          <PrimitiveLink target="_blank" href="https://evolut1on.de/">
             evolut1on
-          </Link>{" "}
+          </PrimitiveLink>{" "}
           which will represent Germany at the World Finals in Saudi Arabia this
           year. Additionally, I have experience in website development for
           private clients and small businesses, and I’ve even designed and
-          implemented <Link href="#projects">my own programming language</Link>{" "}
+          implemented{" "}
+          <PrimitiveLink href="#projects">
+            my own programming language
+          </PrimitiveLink>{" "}
           along with its compiler. I'm always eager to apply my skills in
           innovative projects and am particularly interested in machine
           learning, software development, and microcontroller programming.

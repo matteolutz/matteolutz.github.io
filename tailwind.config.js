@@ -5,6 +5,8 @@ export default {
     extend: {
       boxShadow: {
         navbar: "0 10px 30px -10px rgba(2, 12, 27, 0.7)",
+        "mobile-navbar": "-10px 0px 30px -15px rgba(2,12,27,0.7)",
+        project: "0 10px 30px -15px rgba(2,12,27,0.7)",
       },
       fontSize: {
         base: "20px",

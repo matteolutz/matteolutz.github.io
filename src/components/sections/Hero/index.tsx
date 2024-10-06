@@ -1,4 +1,4 @@
-import Link from "@/components/primitives/Link";
+import PrimitiveLink from "@/components/primitives/PrimitiveLink";
 import { FC } from "react";
 
 const Hero: FC = () => (
@@ -17,9 +17,9 @@ const Hero: FC = () => (
     </h1>
     <p className="mt-6 w-full max-w-[540px] text-base">
       I'm a computer science student at the{" "}
-      <Link href="https://tum.de" target="_blank">
+      <PrimitiveLink href="https://tum.de" target="_blank">
         Technische Universität München
-      </Link>{" "}
+      </PrimitiveLink>{" "}
       and I like to build all sorts of things, that involve code. From creating
       websites to building compilers, I'm always up for a challenge.
     </p>

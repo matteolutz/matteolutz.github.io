@@ -5,6 +5,7 @@ import cn from "@/utils/cn";
 import { FaBars } from "react-icons/fa";
 import MobileNavSidebar from "./mobile";
 import { useIsVisible } from "@/hooks/dom";
+import { HashLink } from "react-router-hash-link";
 
 export const NAVBAR_LINKS: Array<{ name: string; href: string }> = [
   {
@@ -98,13 +99,13 @@ const Navbar: FC<{ setBlur: (blur: boolean) => void }> = ({ setBlur }) => {
 
       <div className="flex items-center justify-center gap-4 flex-wrap max-sm:gap-y-1 max-md:hidden">
         {NAVBAR_LINKS.map(({ name, href }, idx) => (
-          <a
+          <HashLink
             key={idx}
-            href={href}
+            to={href}
             className="text-secondary cursor-pointer text-sm transition-colors hover:text-tertiary"
           >
             <span className="text-xs text-tertiary font-mono">*</span> {name}
-          </a>
+          </HashLink>
         ))}
       </div>
 

@@ -4,16 +4,25 @@ import SectionHeading from "@/components/primitives/SectionHeading";
 import mePng from "@/assets/png/me.png";
 import Image from "@/components/primitives/Image";
 import PrimitiveLink from "@/components/primitives/PrimitiveLink";
+import MatteoMarkdown from "@/components/primitives/MatteoMarkdown";
+import { BhdComponent, BhdContentBlockComponentProps } from "bhd-cms-react";
 
-const About: FC = () => (
-  <section className="section-about section" id="about">
+const About: FC<BhdContentBlockComponentProps> = ({
+  contentBlock,
+  bhdRoot,
+  bhdField,
+}) => (
+  <section {...bhdRoot({})} className="section-about section" id="about">
     <SectionHeading heading="About Me" />
     <div
       className="grid gap-10 max-md:flex max-md:flex-col max-md:items-center"
       style={{ gridTemplateColumns: "3fr 2fr" }}
     >
-      <div className="w-full flex flex-col gap-5 text-base">
-        <p>
+      <div
+        {...bhdField("aboutText", {})}
+        className="w-full flex flex-col gap-5 text-base"
+      >
+        {/*<p>
           Hey! My name is Matteo, and I'm a passionate computer science student
           with a strong background in programming and software development. I
           graduated from{" "}
@@ -58,12 +67,19 @@ const About: FC = () => (
           along with its compiler. I'm always eager to apply my skills in
           innovative projects and am particularly interested in machine
           learning, software development, and microcontroller programming.
-        </p>
+        </p>*/}
+        {contentBlock.content.aboutText.map((text, idx) => (
+          <MatteoMarkdown key={idx}>{text}</MatteoMarkdown>
+        ))}
       </div>
       {/*<div className="w-full max-md:max-w-[300px]">
         <img className="w-full rounded-lg" alt="Me!" src={mePng} />
       </div>*/}
-      <Image src={mePng} caption="Yep, that's me!" />
+      {/*<Image src={mePng} caption="Yep, that's me!" />*/}
+      <BhdComponent
+        {...bhdField("image", {})}
+        contentBlockId={contentBlock.content.image}
+      />
     </div>
   </section>
 );

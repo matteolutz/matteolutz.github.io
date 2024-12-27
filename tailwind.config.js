@@ -39,5 +39,9 @@ export default {
       mono: ["SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", "monospace"],
     },
   },
-  plugins: [],
+  plugins: [
+    ({ addVariant }) => {
+      addVariant("child-a-hover", "& a:hover");
+    },
+  ],
 };

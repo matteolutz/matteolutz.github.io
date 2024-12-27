@@ -9,6 +9,8 @@ import SocialOverlay from "../SocialOverlay";
 import Footer from "../Footer";
 import cn from "@/utils/cn";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { BhdComponent } from "bhd-cms-react";
+import Loader from "../primitives/Loader";
 
 const App: FC = () => {
   const [blur, setBlur] = useState<boolean>(false);
@@ -30,11 +32,11 @@ const App: FC = () => {
             <div className={cn(blur && "blur", "transition-[filter]")}>
               <div className="w-full h-full flex justify-center max-[1400px]:px-24 max-lg:px-12 max-md:px-8">
                 <div className="w-full max-w-[1000px] flex flex-col [&>section]:pt-20 [&>section]:w-full mb-20">
-                  <Hero />
-                  <About />
+                  <BhdComponent contentBlockId="cm5719qp30003csicx5fimuwx" />
+                  <BhdComponent contentBlockId="cm572gwh7000fcsicv7tx8niw" />
                   <Experience />
                   <Projects />
-                  <Contact />
+                  <BhdComponent contentBlockId="cm5732cdq000jcsicxyh8i4xb" />
                 </div>
               </div>
             </div>

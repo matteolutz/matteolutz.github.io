@@ -1,27 +1,43 @@
+import MatteoMarkdown from "@/components/primitives/MatteoMarkdown";
 import PrimitiveLink from "@/components/primitives/PrimitiveLink";
+import { BhdContentBlockComponentProps } from "bhd-cms-react";
 import { FC } from "react";
+import Markdown from "react-markdown";
 
-const Hero: FC = () => (
+const Hero: FC<BhdContentBlockComponentProps> = ({
+  contentBlock,
+  bhdRoot,
+  bhdField,
+}) => (
   <section
-    className="flex flex-col justify-center min-h-[100vh] relative"
-    id="home"
+    {...bhdRoot({
+      className: "flex flex-col justify-center min-h-[100vh] relative",
+      id: "home",
+    })}
   >
-    <h3 className="font-mono font-normal mb-6 text-base text-tertiary">
-      Hey there, my name is
+    <h3
+      {...bhdField("heyText", {})}
+      className="font-mono font-normal mb-6 text-base text-tertiary"
+    >
+      {contentBlock.content.heyText}
     </h3>
-    <h1 className="text-7xl text-secondary font-semibold max-md:text-5xl max-sm:text-3xl">
-      Matteo Lutz.
+    <h1
+      {...bhdField("nameText", {})}
+      className="text-7xl text-secondary font-semibold max-md:text-5xl max-sm:text-3xl"
+    >
+      {contentBlock.content.nameText}
     </h1>
-    <h1 className="text-7xl text-primary font-semibold max-md:text-5xl max-sm:text-3xl">
-      I build things with code.
+    <h1
+      {...bhdField("subNameText", {})}
+      className="text-7xl text-primary font-semibold max-md:text-5xl max-sm:text-3xl"
+    >
+      {contentBlock.content.subNameText}
     </h1>
-    <p className="mt-6 w-full max-w-[540px] text-base">
-      I'm a computer science student at the{" "}
-      <PrimitiveLink href="https://tum.de" target="_blank">
-        Technische Universität München
-      </PrimitiveLink>{" "}
-      and I like to build all sorts of things, that involve code. From creating
-      websites to building compilers, I'm always up for a challenge.
+    <p
+      {...bhdField("infoText", {})}
+      className="mt-6 w-full max-w-[540px] text-base"
+    >
+      <MatteoMarkdown>{contentBlock.content.infoText}</MatteoMarkdown>
     </p>
   </section>
 );

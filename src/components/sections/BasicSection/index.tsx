@@ -8,7 +8,11 @@ const BasicSection: FC<BhdContentBlockComponentProps> = ({
   bhdRoot,
   bhdField,
 }) => (
-  <section {...bhdRoot({})} className="section h-[65vh]" id={contentBlock.id}>
+  <section
+    {...bhdRoot({})}
+    className="section h-[65vh]"
+    id={contentBlock.content.id ?? contentBlock.id}
+  >
     <div className="w-full h-full flex justify-center items-center flex-col">
       <SectionHeading
         {...bhdField("heading", {})}

@@ -26,10 +26,20 @@ const SOCIAL_OVERLAY_ITEMS = [
   },
 ];
 
-const SocialOverlay: FC<BhdContentBlockComponentProps> = ({ contentBlock }) => {
+const SocialOverlay: FC<BhdContentBlockComponentProps> = ({
+  contentBlock,
+  bhdRoot,
+  bhdField,
+}) => {
   return (
-    <div className="z-10 fixed left-[3rem] w-[20px] max-lg:hidden bottom-0">
-      <ul className="list-none gap-5 flex flex-col items-center justify-end after:content-normal w-[1.5px] h-[min(100px,10vh)] bg-secondary">
+    <div
+      {...bhdRoot({})}
+      className="z-10 fixed left-[3rem] w-[20px] max-lg:hidden bottom-0"
+    >
+      <ul
+        {...bhdField("items", {})}
+        className="list-none gap-5 flex flex-col items-center justify-end after:content-normal w-[1.5px] h-[min(100px,10vh)] bg-secondary"
+      >
         {contentBlock.content.items.map((link, idx) => (
           <li key={idx} className="last-of-type:mb-[min(100px,10vh)]">
             <a

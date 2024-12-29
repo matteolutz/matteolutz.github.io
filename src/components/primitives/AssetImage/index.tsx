@@ -12,9 +12,10 @@ const AssetImage: FC<BhdContentBlockComponentProps> = ({
   return (
     <Image
       {...bhdRoot({})}
-      {...bhdField("image", {})}
+      {...bhdField("asset", {})}
       src={getAssetUrl(contentBlock.content.asset)}
       caption={contentBlock.content.alt}
+      captionsProps={bhdField("alt", {})}
       alt={contentBlock.content.alt}
     />
   );

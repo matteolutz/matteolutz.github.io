@@ -9,19 +9,30 @@ import Hero from "./components/sections/Hero";
 import "bhd-cms-react/dist/styles.css";
 import About from "./components/sections/About";
 import AssetImage from "./components/primitives/AssetImage";
-import Loader from "./components/primitives/Loader";
+import { LoaderPage } from "./components/primitives/Loader";
 import BasicSection from "./components/sections/BasicSection";
 import ProjectComponent from "./components/sections/Projects/project";
 import Projects from "./components/sections/Projects";
 import BasicPage from "./components/BasicPage";
 import SocialOverlay from "./components/SocialOverlay";
+import PrimitiveLink from "./components/primitives/PrimitiveLink";
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
 
 const options: BhdContextOptions = {
   accessToken: "1a910dd5-e3e4-49e7-ace3-d6472d2f56a0",
-  loadingComponent: Loader,
+  loadingComponent: LoaderPage,
+  errorComponent: () => (
+    <div className="w-screen h-screen flex justify-center items-center flex-col gap-2">
+      <h1 className="text-7xl text-primary font-semibold max-md:text-5xl max-sm:text-3xl">
+        Something went wrong :(
+      </h1>
+      <div className="text-lg">
+        Please return <PrimitiveLink href="/">Home</PrimitiveLink>.
+      </div>
+    </div>
+  ),
   blueprintLut: {
     cm5715nuc0001csicndi9jnrp: Hero,
     cm571w8zj0005csicyu6kdgch: About,

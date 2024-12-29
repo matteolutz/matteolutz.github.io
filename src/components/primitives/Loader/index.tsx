@@ -23,3 +23,9 @@ const Loader = () => {
 };
 
 export default Loader;
+
+export const LoaderPage = () => (
+  <div className="w-screen h-screen flex justify-center items-center">
+    <Loader />
+  </div>
+);

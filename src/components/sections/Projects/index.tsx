@@ -30,7 +30,7 @@ const Projects: FC<BhdContentBlockComponentProps> = ({
       <div className="flex flex-col justify-center items-center w-full mt-20 font-mono text-xs">
         Want to see more?
         <Link
-          to="archive"
+          to={contentBlock.content.archivePage}
           className="text-base text-tertiary hover:underline underline-offset-2 transition-all"
         >
           View the archive

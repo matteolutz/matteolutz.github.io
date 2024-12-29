@@ -810,7 +810,7 @@ balanced-match@^1.0.0:
 
 "bhd-cms-react@https://github.com/matteolutz/bhd-cms-react":
   version "1.0.9"
-  resolved "https://github.com/matteolutz/bhd-cms-react#4808255259dc7ca191f13fd88d8246f0aca19d32"
+  resolved "https://github.com/matteolutz/bhd-cms-react#722706097d181759ecef970709c382b7df10b273"
   dependencies:
     axios "^1.7.9"
     react "^18.3.1"

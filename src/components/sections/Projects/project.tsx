@@ -58,9 +58,9 @@ const ProjectComponent: FC<BhdContentBlockComponentProps<{ idx: number }>> = ({
           </h3>
         </div>
         <div className="bg-[#112240] p-6 text-base shadow-project flex flex-col gap-4 rounded">
-          <MatteoMarkdown {...bhdField("description", {})}>
-            {contentBlock.content.description}
-          </MatteoMarkdown>
+          <div {...bhdField("description", {})}>
+            <MatteoMarkdown>{contentBlock.content.description}</MatteoMarkdown>
+          </div>
           {((contentBlock.content.relatedPersons?.length ?? 0) > 0 ||
             (contentBlock.content.otherRelations?.length ?? 0) > 0) && (
             <div className="flex flex-col gap-y-1">
@@ -73,8 +73,14 @@ const ProjectComponent: FC<BhdContentBlockComponentProps<{ idx: number }>> = ({
                     Related people:
                     {contentBlock.content.relatedPersons.map((person, idx) => (
                       <BhdInlineComponent key={idx} contentBlockId={person}>
-                        {({ contentBlock: relatedPersonContentBlock }) => (
+                        {({
+                          contentBlock: relatedPersonContentBlock,
+                          bhdRoot,
+                          bhdField,
+                        }) => (
                           <PrimitiveLink
+                            {...bhdRoot({})}
+                            {...bhdField("name", {})}
                             key={idx}
                             target="_blank"
                             className="font-mono"
@@ -97,8 +103,14 @@ const ProjectComponent: FC<BhdContentBlockComponentProps<{ idx: number }>> = ({
                     Other relations:
                     {contentBlock.content.otherRelations.map((rel, idx) => (
                       <BhdInlineComponent key={idx} contentBlockId={rel}>
-                        {({ contentBlock: relationContentBlock }) => (
+                        {({
+                          contentBlock: relationContentBlock,
+                          bhdRoot,
+                          bhdField,
+                        }) => (
                           <PrimitiveLink
+                            {...bhdRoot({})}
+                            {...bhdField("name", {})}
                             key={idx}
                             target="_blank"
                             className="font-mono"

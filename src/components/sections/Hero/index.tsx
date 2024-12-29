@@ -33,12 +33,12 @@ const Hero: FC<BhdContentBlockComponentProps> = ({
     >
       {contentBlock.content.subNameText}
     </h1>
-    <p
+    <div
       {...bhdField("infoText", {})}
       className="mt-6 w-full max-w-[540px] text-base"
     >
       <MatteoMarkdown>{contentBlock.content.infoText}</MatteoMarkdown>
-    </p>
+    </div>
   </section>
 );
 

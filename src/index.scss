@@ -48,9 +48,25 @@ $transition: 0.3s;
     src: url("./assets/otf/SFMono-Regular.otf");
 }
 
+// Calibre Regular
 @font-face {
     font-family: "Calibre";
-    src: url("./assets/otf/CalibreRegular.otf");
+    font-weight: 400;
+    src: url("./assets/woff2/Calibre/Calibre-Regular.woff2");
+}
+
+// Calibre Medium
+@font-face {
+    font-family: "Calibre";
+    font-weight: 500;
+    src: url("./assets/woff2/Calibre/Calibre-Medium.woff2");
+}
+
+// Calibre Semibold
+@font-face {
+    font-family: "Calibre";
+    font-weight: 600;
+    src: url("./assets/woff2/Calibre/Calibre-Semibold.woff2");
 }
 
 ::selection {

@@ -16,6 +16,7 @@ import Projects from "./components/sections/Projects";
 import BasicPage from "./components/BasicPage";
 import SocialOverlay from "./components/SocialOverlay";
 import PrimitiveLink from "./components/primitives/PrimitiveLink";
+import AssetVideo from "./components/primitives/AssetVideo";
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
@@ -42,6 +43,7 @@ const options: BhdContextOptions = {
     cm5871ew20003s6ih86x3xaik: ProjectComponent,
 
     cm571wvyl0007csickattwmqf: AssetImage,
+    cmg9ydww0000rmx23br2n87lx: AssetVideo,
     cm589e6ly000vs6ihor1up8oo: SocialOverlay,
 
     cm518efip0004wvrmx3olq8fk: BasicPage,
